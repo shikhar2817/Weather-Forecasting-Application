@@ -1,7 +1,6 @@
 import { InputGroup, InputGroupAddon, Button, Input } from 'reactstrap';
 
 export default function Search(){
-    const BarStyling = {width:"20rem",background:"#F2F1F9", border:"none", padding:"0.5rem"};
     return (
         <>
             <div style={{ backgroundImage: "url(images/weather.jpg)", width:"100%", height:"200px" }}>

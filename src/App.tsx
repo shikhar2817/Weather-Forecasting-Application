@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
 // components
-import { Header } from "../src/components/header/HeaderComponent";
-import { Footer } from '../src/components/footer/FooterComponent';
-import { Main } from '../src/components/main/MainComponent';
+import { Header } from './components/HeaderComponent';
+import { Footer } from './components/FooterComponent';
+import { Main } from './components/MainComponent';
 
 function App() {
   return (
