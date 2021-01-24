@@ -1,9 +1,9 @@
 import React from 'react';
 
-export function Header () {
+export function Main () {
     return (
         <div>
-            HEADER
+            MaiN
         </div>
     );
 }
