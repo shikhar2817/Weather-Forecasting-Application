@@ -6,7 +6,7 @@ export function Footer() {
         <div className="container">
             <div className="row justify-content-center">             
                 <div className="col-auto">
-                    <p>© Copyright 2020 Weather Erudite. All Rights Reserved.</p>
+                    <p>© Copyright 2021 Weather Erudite. All Rights Reserved.</p>
                 </div>
             </div>
         </div>
