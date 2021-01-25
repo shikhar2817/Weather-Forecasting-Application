@@ -5,8 +5,8 @@ import Promotion from './PromotionComponent';
 export function Main () {
     return (
         <div>
-            <Search/>
             <Promotion/>
+            <Search/>
         </div>
     );
 }
