@@ -1,7 +1,7 @@
 import React from 'react';
 import Search from './SearchComponent';
 import Promotion from './PromotionComponent';
-import { Tab , Tabs } from 'react-bootstrap';
+import { Tab , Tabs, Container, Col, Row } from 'react-bootstrap';
 
 function InformationTabs(){
     return (
@@ -34,8 +34,13 @@ function InformationTabs(){
 export default function Home () {
     return (
         <div>
-            <Promotion/>
-            <Search/>
+            {/* <Container fluid={true} > */}
+                <Row noGutters={true} >
+                    <Col sm={5}> <Promotion/> </Col>
+                    <Col sm={7}> <Search/> </Col>
+                </Row>
+            {/* </Container> */}
+            
             <InformationTabs/>
         </div>
     );

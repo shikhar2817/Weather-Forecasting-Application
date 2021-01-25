@@ -3,9 +3,9 @@ import { InputGroup, InputGroupAddon, Button, Input } from 'reactstrap';
 export default function Search(){
     return (
         <>
-            <div style={{ backgroundImage: "url(images/weather.jpg)", width:"100%", height:"200px" }}>
+            <div style={{ backgroundImage: "url(images/weather.jpg)", width:"100%", height:"270px" }}>
                 <div className="container" >
-                    <br/><br/><br/>
+                    <br/><br/><br/><br/><br/>
                     <InputGroup>
                         <div className="container">
                             <div className="row">
