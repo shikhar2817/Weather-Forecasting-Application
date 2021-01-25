@@ -1,5 +1,5 @@
 import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'reactstrap';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function About(){
     return(
@@ -8,9 +8,9 @@ export default function About(){
                 <div className="row">
                     <Breadcrumb>
                         <BreadcrumbItem>
-                            {/* <Link to="/home"> */}
+                            <Link to="/home">
                                 Home
-                            {/* </Link> */}
+                            </Link>
                         </BreadcrumbItem>
                         <BreadcrumbItem active>About Us</BreadcrumbItem>
                     </Breadcrumb>

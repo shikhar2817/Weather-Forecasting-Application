@@ -1,5 +1,6 @@
 import Carousel from 'react-bootstrap/Carousel';
 import { useState } from 'react';
+import { Badge } from 'reactstrap';
 
 export default function Promotion() {
   const [index, setIndex] = useState(0);
@@ -39,7 +40,7 @@ export default function Promotion() {
             />
 
           <Carousel.Caption>
-            <h2 style={{fontWeight: 'bolder'}}> Air Quality </h2>
+            <h2 style={{fontWeight: 'bolder'}}> Air Quality <Badge href="#" color="danger">New</Badge></h2> 
             <p>As we are living in the industrial areas, information regarding pollution is critical.</p>
           </Carousel.Caption>
         </Carousel.Item>
