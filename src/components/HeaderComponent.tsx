@@ -27,18 +27,18 @@ export function Header(){
                     <Nav className="ml-auto" navbar>
                         <NavItem> 
                             <NavLink className="nav-link" to="/home">
-                                <span className="fa fa-home fa-lg"></span> Home
+                                <span className="fa fa-home fa-lg"> </span> Home
                             </NavLink>
                         </NavItem>
                         <NavItem> 
                             <NavLink className="nav-link" to="/aboutus">
-                                <span className="fa fa-info fa-lg"></span> Aboutus
+                                <span className="fa fa-info fa-lg"> </span> About
                             </NavLink>
                         </NavItem>
 
                         <NavItem> 
                             <NavLink className="nav-link" to="/contactus">
-                                <span className="fa fa-address-card fa-lg"></span> ContactUs
+                                <span className="fa fa-address-card fa-lg"> </span> Contact
                             </NavLink>
                         </NavItem>
                     </Nav>
