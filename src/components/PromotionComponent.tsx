@@ -24,7 +24,7 @@ export default function Promotion() {
         <Carousel.Item className="custom-tag">
           <img
             className="d-block w-100 h-100"
-            src="images/1.jpg"
+            src="images/11.jpg"
             alt="First slide"
             />
           <Carousel.Caption>
@@ -35,7 +35,7 @@ export default function Promotion() {
         <Carousel.Item className="custom-tag">
           <img
             className="d-block w-100 h-100"
-            src="images/2.jpg"
+            src="images/22.jpg"
             alt="Second slide"
             />
 
@@ -47,7 +47,7 @@ export default function Promotion() {
         <Carousel.Item className="custom-tag">
           <img
             className="d-block w-100 h-100"
-            src="images/3.jpg"
+            src="images/33.jpg"
             alt="Third slide"
             />
 
