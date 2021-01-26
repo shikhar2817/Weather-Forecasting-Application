@@ -1,7 +1,7 @@
 import React from 'react';
 import Search from './SearchComponent';
 import Promotion from './PromotionComponent';
-import { Tab , Tabs, Container, Col, Row } from 'react-bootstrap';
+import { Tab , Tabs, Col, Row } from 'react-bootstrap';
 
 function InformationTabs(){
     return (

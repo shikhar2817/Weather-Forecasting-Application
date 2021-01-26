@@ -1,4 +1,4 @@
-import { Badge, Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media, Row } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 export default function About(){
