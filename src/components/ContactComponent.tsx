@@ -1,5 +1,6 @@
-import { Breadcrumb, BreadcrumbItem, Button, Label, Col, Row } from "reactstrap";
+import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 import { Link } from "react-router-dom";
+
 
 export default function Contact(){
     return(
@@ -21,12 +22,12 @@ export default function Contact(){
                 <div className="col-12 col-sm-4 offset-sm-1">
                         <h5>Our Address</h5>
                         <address>
-                        121, Clear Water Bay Road<br />
-                        Clear Water Bay, Kowloon<br />
-                        HONG KONG<br />
-                        <i className="fa fa-phone"></i>: +852 1234 5678<br />
-                        <i className="fa fa-fax"></i>: +852 8765 4321<br />
-                        <i className="fa fa-envelope"></i>: <a href="mailto:confusion@food.net">confusion@food.net</a>
+                        Plot Number 271<br />
+                        Home Number 9/96 Indripuri,<br />
+                        Gandhi Gram, Kanpur-7<br />
+                        Uttar Pradesh, India<br />
+                        <i className="fa fa-phone"></i>: +91 9140269982<br />
+                        <i className="fa fa-envelope"></i>: <a href="mailto:shikharsingh0076@gmail.com">shikharsingh0076@gmail.com</a>
                         </address>
                 </div>
                 <div className="col-12 col-sm-6 offset-sm-1">
@@ -34,9 +35,11 @@ export default function Contact(){
                 </div>
                 <div className="col-12 col-sm-11 offset-sm-1">
                     <div className="btn-group" role="group">
-                        <a role="button" className="btn btn-primary" href="tel:+85212345678"><i className="fa fa-phone"></i> Call</a>
-                        <a role="button" className="btn btn-info" href="https://www.skype.com/en/"><i className="fa fa-skype"></i> Skype</a>
-                        <a role="button" className="btn btn-success" href="mailto:confusion@food.net"><i className="fa fa-envelope-o"></i> Email</a>
+                        <a role="button" className="btn btn-success" href="tel:+91 9140269982"><i className="fa fa-phone"></i></a>
+                        <a role="button" className="btn btn-danger" href="https://www.instagram.com/shikhar_singh_2817/"> <i className="fa fa-instagram"></i> </a>
+                        <a role="button" href="https://github.com/shikhar2817" className="btn btn-dark"><i className="fa fa-github"></i> </a>
+                        <a href="https://www.linkedin.com/in/shikhar-singh-b6134b137/" className="btn btn-primary"><i className="fa fa-linkedin"></i></a>
+                        <a role="button" className="btn btn-danger" href="mailto:shikharsingh0076@gmail.com"><i className="fa fa-envelope-o"></i> </a>
                     </div>
                 </div>
             </div>
