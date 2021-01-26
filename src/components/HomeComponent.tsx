@@ -34,13 +34,10 @@ function InformationTabs(){
 export default function Home () {
     return (
         <div>
-            {/* <Container fluid={true} > */}
-                <Row noGutters={true} >
-                    <Col sm={5}> <Promotion/> </Col>
-                    <Col sm={7}> <Search/> </Col>
-                </Row>
-            {/* </Container> */}
-            
+            <Row noGutters={true} >
+                <Col sm={5}> <Promotion/> </Col>
+                <Col sm={7}> <Search/> </Col>
+            </Row>
             <InformationTabs/>
         </div>
     );
