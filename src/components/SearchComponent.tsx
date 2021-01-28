@@ -2,8 +2,7 @@ import { useState } from 'react';
 import { InputGroup, InputGroupAddon, Button, Input } from 'reactstrap';
 
 const Search = (props:any) => {
-    
-    
+      
     const getLocation = () => {
         if(navigator.geolocation){
             navigator.geolocation.getCurrentPosition(getCoordinates);
@@ -13,8 +12,8 @@ const Search = (props:any) => {
     }
 
     const getCoordinates = (position: any) => {
-        console.log(props);
-        console.log(position);
+        // console.log(props);
+        // console.log(position);
         props.onChangeLocation([position.coords.latitude , position.coords.longitude]);
     }
 

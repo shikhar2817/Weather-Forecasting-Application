@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Search from './SearchComponent';
 import Promotion from './PromotionComponent';
-import { Tab , Tabs, Col, Row } from 'react-bootstrap';
+import { Tab , Tabs, Col, Row, Container } from 'react-bootstrap';
 
 function InformationTabs(){
     return (
@@ -46,7 +46,10 @@ export default function Home () {
                     <Search onChangeInput={(value: string) => setLocation(value)} onChangeLocation={(value: any) => setCoords(value)} /> 
                 </Col>
             </Row>
-            {coords[0]} and {coords[1]}
+            <Container style={{marginTop:'20px'}} >
+                <h2> {location} </h2>
+                {coords[0]} and {coords[1]}
+            </Container>
             <InformationTabs/>
         </div>
     );
