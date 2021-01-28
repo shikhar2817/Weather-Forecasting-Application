@@ -1,19 +1,20 @@
 import { useState } from 'react';
 import { InputGroup, InputGroupAddon, Button, Input } from 'reactstrap';
 
-export default function Search(){
+const Search = (props: any) => {
     
     const [location, setLocation] = useState(0);
     
     const getLocation = () => {
         if(navigator.geolocation){
-            console.log(navigator.geolocation.getCurrentPosition(getCordinates));
+            navigator.geolocation.getCurrentPosition(getCordinates);
         }else{
             alert("Not allowed location");
         }
     }
 
     const getCordinates = (position: any) => {
+        console.log(props);
         console.log(position);
     }
 
@@ -46,3 +47,5 @@ export default function Search(){
         </>
     );
 }
+
+export default Search;

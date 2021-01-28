@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Search from './SearchComponent';
 import Promotion from './PromotionComponent';
 import { Tab , Tabs, Col, Row } from 'react-bootstrap';
@@ -32,11 +32,21 @@ function InformationTabs(){
 }
 
 export default function Home () {
+
+    const [coords , setCoords] = useState([28.6139,77.2090]);
+    const [location , setLocation] = useState('New Delhi');
+    
+    let value = 10;
+
     return (
         <div>
             <Row noGutters={true} >
-                <Col sm={5}> <Promotion/> </Col>
-                <Col sm={7}> <Search/> </Col>
+                <Col sm={5}> 
+                    <Promotion/> 
+                </Col>
+                <Col sm={7}> 
+                    <Search onChange={() => alert('Invoked')} /> 
+                </Col>
             </Row>
             <InformationTabs/>
         </div>
