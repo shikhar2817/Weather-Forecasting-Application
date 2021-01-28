@@ -1,21 +1,21 @@
 import { useState } from 'react';
 import { InputGroup, InputGroupAddon, Button, Input } from 'reactstrap';
 
-const Search = (props: any) => {
+const Search = (props:any) => {
     
-    const [location, setLocation] = useState(0);
     
     const getLocation = () => {
         if(navigator.geolocation){
-            navigator.geolocation.getCurrentPosition(getCordinates);
+            navigator.geolocation.getCurrentPosition(getCoordinates);
         }else{
-            alert("Not allowed location");
+            console.log("Location Access Denied!!!");
         }
     }
 
-    const getCordinates = (position: any) => {
+    const getCoordinates = (position: any) => {
         console.log(props);
         console.log(position);
+        props.onChangeLocation([position.coords.latitude , position.coords.longitude]);
     }
 
     return (
@@ -27,7 +27,7 @@ const Search = (props: any) => {
                         <div className="container">
                             <div className="row">
                                 <div className="col">
-                                    <Input icon="search" placeholder="Search Location, Postal"/>
+                                    <Input icon="search" placeholder="Search Location, Postal" onChange={event => props.onChangeInput(event.target.value)} />
                                 </div>
                                 <div className="ml-0">
                                     <InputGroupAddon addonType="append">

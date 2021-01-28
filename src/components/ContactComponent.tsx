@@ -51,19 +51,23 @@ export default function Contact(){
                         <div className="col-12 col-md-9">
                             <form>
                                 <div className="form-group row">
-                                    <label  className="col-md-2 col-form-label">Name</label>
                                     <div className="col-md-10">
                                         <input type="text" className="form-control" id="name" name="name" placeholder="Name"/>
                                     </div>
                                 </div>
                                 <div className="form-group row">
-                                    <label  className="col-md-2 col-form-label">Email</label>
                                     <div className="col-md-10">
                                         <input type="email" className="form-control" id="emailid" name="emailid" placeholder="Email"/>
                                     </div>
                                 </div>
+                                
                                 <div className="form-group row">
-                                    <div className="col-md-6 offset-md-2">
+                                    <div className="col-md-10">
+                                        <textarea className="form-control" id="feedback" name="feedback" placeholder="Your Message" rows={6}></textarea>
+                                    </div>
+                                </div>
+                                <div className="form-group row">
+                                    <div className="col-md-6 ">
                                         <div className="form-check">
                                             <input type="checkbox" className="form-check-input" name="approve" id="approve" value=""/>
                                             <label className="form-check-label"  >
@@ -73,13 +77,7 @@ export default function Contact(){
                                     </div>
                                 </div>
                                 <div className="form-group row">
-                                    <label className="col-md-2 col-form-label">Message</label>
-                                    <div className="col-md-10">
-                                        <textarea className="form-control" id="feedback" name="feedback" rows={6}></textarea>
-                                    </div>
-                                </div>
-                                <div className="form-group row">
-                                    <div className="offset-md-2 col-md-10">
+                                    <div className=" col-md-10">
                                         <button type="submit" className="btn btn-primary">Send Feedback</button>
                                     </div>
                                 </div>

@@ -35,8 +35,6 @@ export default function Home () {
 
     const [coords , setCoords] = useState([28.6139,77.2090]);
     const [location , setLocation] = useState('New Delhi');
-    
-    let value = 10;
 
     return (
         <div>
@@ -45,9 +43,10 @@ export default function Home () {
                     <Promotion/> 
                 </Col>
                 <Col sm={7}> 
-                    <Search onChange={() => alert('Invoked')} /> 
+                    <Search onChangeInput={(value: string) => setLocation(value)} onChangeLocation={(value: any) => setCoords(value)} /> 
                 </Col>
             </Row>
+            {coords[0]} and {coords[1]}
             <InformationTabs/>
         </div>
     );
