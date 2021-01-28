@@ -1,6 +1,22 @@
+import { useState } from 'react';
 import { InputGroup, InputGroupAddon, Button, Input } from 'reactstrap';
 
 export default function Search(){
+    
+    const [location, setLocation] = useState(0);
+    
+    const getLocation = () => {
+        if(navigator.geolocation){
+            console.log(navigator.geolocation.getCurrentPosition(getCordinates));
+        }else{
+            alert("Not allowed location");
+        }
+    }
+
+    const getCordinates = (position: any) => {
+        console.log(position);
+    }
+
     return (
         <>
             <div style={{ backgroundImage: "url(images/weather.jpg)", width:"100%", height:"270px" }}>
@@ -14,7 +30,7 @@ export default function Search(){
                                 </div>
                                 <div className="ml-0">
                                     <InputGroupAddon addonType="append">
-                                        <Button color="secondary"> <i className="fa fa-map-marker" aria-hidden="true"></i></Button>
+                                        <Button color="secondary" onClick={getLocation}> <i className="fa fa-map-marker" aria-hidden="true"></i></Button>
                                     </InputGroupAddon>
                                 </div>
                                 <div className="ml-1">
