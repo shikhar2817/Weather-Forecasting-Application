@@ -1,8 +1,30 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { InputGroup, InputGroupAddon, Button, Input } from 'reactstrap';
-
+import { mapboxAccessToken } from '../shared/API';
 const Search = (props:any) => {
-      
+
+    const [place, setPlace] = useState('');
+    const [options, setOptions] = useState();
+
+    useEffect( () => {
+        fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${place}.json?access_token=${mapboxAccessToken}`)
+            .then(response => response.json())
+            .then(data => {
+                let len = 0;
+                // console.log(data.features.length);
+                if (data !== null && data.features) len = data.features.length;
+                let placesOption = [];
+
+                for(let i = 0 ; i < Math.min(5,len); ++i){
+                    let option = data.features[i].place_name;
+                    placesOption.push(option);
+                }
+                
+                setOptions(data.features); 
+                console.log(placesOption);
+            });
+    },[place]);
+
     const getLocation = () => {
         if(navigator.geolocation){
             navigator.geolocation.getCurrentPosition(getCoordinates);
@@ -26,7 +48,7 @@ const Search = (props:any) => {
                         <div className="container">
                             <div className="row">
                                 <div className="col">
-                                    <Input icon="search" placeholder="Search Location, Postal" onChange={event => props.onChangeInput(event.target.value)} />
+                                    <Input icon="search" placeholder="Search Location, Postal" onChange={event => setPlace(event.target.value)} />
                                 </div>
                                 <div className="ml-0">
                                     <InputGroupAddon addonType="append">
