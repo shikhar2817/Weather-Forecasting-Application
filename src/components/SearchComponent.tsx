@@ -1,10 +1,14 @@
 import { useEffect, useState } from 'react';
 import { InputGroup, InputGroupAddon, Button, Input } from 'reactstrap';
 import { mapboxAccessToken } from '../shared/API';
+import './styles/componentStyles.css';
+
 const Search = (props:any) => {
 
+
+    
     const [place, setPlace] = useState('');
-    const [options, setOptions] = useState();
+    const [options, setOptions] = useState([<div></div>]);
 
     useEffect( () => {
         fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${place}.json?access_token=${mapboxAccessToken}`)
@@ -17,10 +21,15 @@ const Search = (props:any) => {
 
                 for(let i = 0 ; i < Math.min(5,len); ++i){
                     let option = data.features[i].place_name;
-                    placesOption.push(option);
+                    placesOption.push(
+                        
+                        <div className="autocomplete-item">
+                            <strong> {option.substr(0, place.length)} </strong> {option.substr(place.length)};
+                        </div>
+                    );
                 }
                 
-                setOptions(data.features); 
+                setOptions(placesOption); 
                 console.log(placesOption);
             });
     },[place]);
@@ -48,7 +57,10 @@ const Search = (props:any) => {
                         <div className="container">
                             <div className="row">
                                 <div className="col">
-                                    <Input icon="search" placeholder="Search Location, Postal" onChange={event => setPlace(event.target.value)} />
+                                    <div className="">
+                                        <Input icon="search" placeholder="Search Location, Postal" onChange={event => setPlace(event.target.value)} />
+                                        {options}
+                                    </div>
                                 </div>
                                 <div className="ml-0">
                                     <InputGroupAddon addonType="append">

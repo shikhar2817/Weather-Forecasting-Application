@@ -13,3 +13,8 @@
     margin-top: 4rem;
     flex-wrap: wrap;
 }
+
+.autocomplete-item{
+    padding: 2px;
+    
+}
