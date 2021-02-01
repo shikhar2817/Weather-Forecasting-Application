@@ -2,6 +2,7 @@ import { useEffect, useState , useRef} from 'react';
 import { InputGroup, InputGroupAddon, Button, Input } from 'reactstrap';
 import { mapboxAccessToken } from '../shared/API';
 import './styles/componentStyles.css';
+import Alert from 'react-bootstrap/Alert';
 
 const Search = (props:any) => {
 
@@ -53,13 +54,24 @@ const Search = (props:any) => {
         <>
             <div style={{ backgroundImage: "url(images/weather.jpg)", width:"100%", height:"270px" }}>
                 <div className="container" >
-                    <br/><br/><br/><br/><br/>
+                    <br/>
                     <InputGroup>
+                        
                         <div className="container">
+                            <div className="popcorn">
+                                <Alert variant="success">
+                                    <Alert.Heading>Search Location by</Alert.Heading>
+                                    <p>
+                                        <hr/>
+                                        Address, Neighbourhood, Locality, Postcode, Place, District, Region, and Country.
+                                    </p>
+                                </Alert>
+                            </div>
+                            
                             <div className="row">
                                 <div className="col">
                                     <div className="">
-                                        <Input onFocus={() => setIsActive(true)} onBlur={() => setIsActive(false)} icon="search" placeholder="Search Location, Postal" onChange={event => setPlace(event.target.value)}  />
+                                        <Input onFocus={() => setIsActive(true)} onBlur={() => setIsActive(false)} icon="search" placeholder="Search Location" onChange={event => setPlace(event.target.value)}  />
                                         {(isActive)? options : <div></div>}
                                     </div>
                                 </div>
