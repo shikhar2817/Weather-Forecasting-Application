@@ -1,37 +1,38 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState , useRef} from 'react';
 import { InputGroup, InputGroupAddon, Button, Input } from 'reactstrap';
 import { mapboxAccessToken } from '../shared/API';
 import './styles/componentStyles.css';
 
 const Search = (props:any) => {
 
-
-    
     const [place, setPlace] = useState('');
     const [options, setOptions] = useState([<div></div>]);
+    const [isActive , setIsActive] = useState(false);
 
     useEffect( () => {
-        fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${place}.json?access_token=${mapboxAccessToken}`)
-            .then(response => response.json())
-            .then(data => {
-                let len = 0;
-                // console.log(data.features.length);
-                if (data !== null && data.features) len = data.features.length;
-                let placesOption = [];
-
-                for(let i = 0 ; i < Math.min(5,len); ++i){
-                    let option = data.features[i].place_name;
-                    placesOption.push(
-                        
-                        <div className="autocomplete-item">
-                            <strong> {option.substr(0, place.length)} </strong> {option.substr(place.length)};
-                        </div>
-                    );
+            fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${place}.json?access_token=${mapboxAccessToken}`)
+                .then(response => response.json())
+                .then(data => {
+                    let len = 0;
+                    // console.log(data.features.length);
+                    if (data !== null && data.features) len = data.features.length;
+                    let placesOption = [];
+    
+                    for(let i = 0 ; i < Math.min(5,len); ++i){
+                        let option = data.features[i].place_name;
+                        placesOption.push(
+                            
+                            <div className="autocomplete-item">
+                                <strong> {option.substr(0, place.length)} </strong> {option.substr(place.length)}
+                            </div>
+                        );
+                    }
+                    
+                    setOptions(placesOption); 
+                    console.log(placesOption);
                 }
-                
-                setOptions(placesOption); 
-                console.log(placesOption);
-            });
+            );
+        
     },[place]);
 
     const getLocation = () => {
@@ -58,8 +59,8 @@ const Search = (props:any) => {
                             <div className="row">
                                 <div className="col">
                                     <div className="">
-                                        <Input icon="search" placeholder="Search Location, Postal" onChange={event => setPlace(event.target.value)} />
-                                        {options}
+                                        <Input onFocus={() => setIsActive(true)} onBlur={() => setIsActive(false)} icon="search" placeholder="Search Location, Postal" onChange={event => setPlace(event.target.value)}  />
+                                        {(isActive)? options : <div></div>}
                                     </div>
                                 </div>
                                 <div className="ml-0">

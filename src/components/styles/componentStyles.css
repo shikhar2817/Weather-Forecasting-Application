@@ -15,6 +15,16 @@
 }
 
 .autocomplete-item{
-    padding: 2px;
-    
+    padding: 10px;
+    margin-top: 1px;
+    font: 16px Arial;
+    background-color: white;
+    cursor: pointer;
+    border: 2px solid rgb(167, 165, 165);
+    border-top: none;
+}
+
+.autocomplete-item:hover {
+    background-color: #343434;
+    color: floralwhite;
 }
