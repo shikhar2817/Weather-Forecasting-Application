@@ -29,6 +29,18 @@
     color: floralwhite;
 }
 
+.autocomplete-item-active {
+    padding: 10px;
+    margin-top: 1px;
+    font: 16px Arial;
+    background-color: white;
+    cursor: pointer;
+    border: 2px solid rgb(167, 165, 165);
+    border-top: none;
+    background-color: #007f88;
+    color: floralwhite;
+}
+
 .popcorn{
     box-shadow: inset;
 }

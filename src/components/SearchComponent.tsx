@@ -9,6 +9,7 @@ const Search = (props:any) => {
     const [place, setPlace] = useState('');
     const [options, setOptions] = useState([<div></div>]);
     const [isActive , setIsActive] = useState(false);
+    const [activeIndex, setActiveIndex] = useState(-1);
 
     useEffect( () => {
             fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${place}.json?access_token=${mapboxAccessToken}`)
@@ -21,9 +22,9 @@ const Search = (props:any) => {
     
                     for(let i = 0 ; i < Math.min(5,len); ++i){
                         let option = data.features[i].place_name;
+                        const className = activeIndex === i ? 'autocomplete-item-active' : 'autocomplete-item'; 
                         placesOption.push(
-                            
-                            <div className="autocomplete-item">
+                            <div className={className}>
                                 <strong> {option.substr(0, place.length)} </strong> {option.substr(place.length)}
                             </div>
                         );
@@ -34,7 +35,7 @@ const Search = (props:any) => {
                 }
             );
         
-    },[place]);
+    },[place,activeIndex]);
 
     const getLocation = () => {
         if(navigator.geolocation){
@@ -48,6 +49,18 @@ const Search = (props:any) => {
         // console.log(props);
         // console.log(position);
         props.onChangeLocation([position.coords.latitude , position.coords.longitude]);
+    }
+
+    const changeIndex = (keyCode: number) => {
+        console.log(keyCode);
+        console.log(activeIndex);
+
+        if(keyCode === 40 ){
+            setActiveIndex((activeIndex+1)%options.length);
+        }
+        else if(keyCode === 38){
+            setActiveIndex(Math.abs((activeIndex+options.length-1)%options.length));
+        }
     }
 
     return (
@@ -71,7 +84,7 @@ const Search = (props:any) => {
                             <div className="row">
                                 <div className="col">
                                     <div className="">
-                                        <Input onFocus={() => setIsActive(true)} onBlur={() => setIsActive(false)} icon="search" placeholder="Search Location" onChange={event => setPlace(event.target.value)}  />
+                                        <Input onKeyDown={e => changeIndex(e.keyCode)} onFocus={() => setIsActive(true)} onBlur={() => setIsActive(false)} icon="search" placeholder="Search Location" onChange={event => setPlace(event.target.value)}  />
                                         {(isActive)? options : <div></div>}
                                     </div>
                                 </div>
