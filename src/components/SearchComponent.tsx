@@ -13,7 +13,7 @@ interface LocationData {
 const Search = (props:any) => {
 
     const [place, setPlace] = useState('');
-    const [optionData, setOptionData] = useState([{}]);
+    const [optionData, setOptionData] = useState<LocationData[]>([]);
     const [options, setOptions] = useState([<div></div>]);
     const [isActive , setIsActive] = useState(false);
     const [activeIndex, setActiveIndex] = useState(-1);
@@ -73,8 +73,9 @@ const Search = (props:any) => {
         console.log('The link was clicked.');
 
         let data = optionData[index];
-        // props.onChangeInput(data.place_name);
-        // props.onChangeLocation(data.coordinates);
+        console.log(data);
+        props.onChangeInput(data.place_name);
+        props.onChangeLocation(data.coordinates);
         
         setPlace("");
         setActiveIndex(-1);

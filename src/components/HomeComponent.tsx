@@ -32,7 +32,7 @@ function InformationTabs(){
 
 export default function Home () {
 
-    const [coords , setCoords] = useState([28.6139,77.2090]);
+    const [coords , setCoords] = useState([77.2090,28.6139]);
     const [location , setLocation] = useState('New Delhi');
 
     return (
