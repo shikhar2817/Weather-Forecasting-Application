@@ -40,20 +40,30 @@ const Search = (props:any) => {
                     for(let i = 0 ; i < Math.min(5,len); ++i){
                         let option = data.features[i].place_name;
                         let coords = data.features[i].geometry.coordinates;
-                        console.log(data.features[i].geometry.coordinates);
-                        const className = activeIndex === i ? 'autocomplete-item-active' : 'autocomplete-item'; 
-                        placesOption.push(
-                            <div className={className} onClick={() => handleClickSearch(i) } >
-                                <strong> {option.substr(0, place.length)}</strong>{option.substr(place.length)}
-                            </div>
-                        );
                         dataPlacesOption.push({
                             place_name: option,
                             coordinates: coords
                         });
                     }
-                    
                     setOptionData(dataPlacesOption);
+
+                    for(let i = 0 ; i < Math.min(5,len); ++i){
+                        let option = data.features[i].place_name;
+                        let coords = data.features[i].geometry.coordinates;
+                        console.log(data.features[i].geometry.coordinates);
+                        const className = activeIndex === i ? 'autocomplete-item-active' : 'autocomplete-item'; 
+                        dataPlacesOption.push({
+                            place_name: option,
+                            coordinates: coords
+                        });
+                        placesOption.push(
+                            <div className={className} onClick={() => handleClickSearch2({place_name: option,coordinates: coords}) } >
+                                <strong> {option.substr(0, place.length)}</strong>{option.substr(place.length)}
+                            </div>
+                        );
+                    }
+                    
+                    
                     setOptions(placesOption); 
                     console.log(placesOption);
                 }
@@ -67,6 +77,15 @@ const Search = (props:any) => {
         }else{
             console.log("Location Access Denied!!!");
         }
+    }
+
+    const handleClickSearch2 = (data: LocationData) => {
+        console.log('The link was clicked.');
+        console.log(data);
+        props.onChangeInput(data.place_name);
+        props.onChangeLocation(data.coordinates);
+        setPlace("");
+        setActiveIndex(-1);
     }
 
     const handleClickSearch = (index: number) => {
