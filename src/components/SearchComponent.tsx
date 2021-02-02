@@ -3,10 +3,17 @@ import { InputGroup, InputGroupAddon, Button, Input } from 'reactstrap';
 import { mapboxAccessToken } from '../shared/API';
 import './styles/componentStyles.css';
 import Alert from 'react-bootstrap/Alert';
+import { act } from 'react-dom/test-utils';
+
+interface LocationData {
+    place_name: string,
+    coordinates: [number,number]
+}
 
 const Search = (props:any) => {
 
     const [place, setPlace] = useState('');
+    const [optionData, setOptionData] = useState([{}]);
     const [options, setOptions] = useState([<div></div>]);
     const [isActive , setIsActive] = useState(false);
     const [activeIndex, setActiveIndex] = useState(-1);
@@ -28,19 +35,25 @@ const Search = (props:any) => {
                     let len = 0;
                     if (data !== null && data.features) len = data.features.length;
                     let placesOption = [];
-                    
+                    let dataPlacesOption = [];
+
                     for(let i = 0 ; i < Math.min(5,len); ++i){
                         let option = data.features[i].place_name;
                         let coords = data.features[i].geometry.coordinates;
                         console.log(data.features[i].geometry.coordinates);
                         const className = activeIndex === i ? 'autocomplete-item-active' : 'autocomplete-item'; 
                         placesOption.push(
-                            <div className={className} onClick={handleClickSearch} >
+                            <div className={className} onClick={() => handleClickSearch(i) } >
                                 <strong> {option.substr(0, place.length)}</strong>{option.substr(place.length)}
                             </div>
                         );
+                        dataPlacesOption.push({
+                            place_name: option,
+                            coordinates: coords
+                        });
                     }
                     
+                    setOptionData(dataPlacesOption);
                     setOptions(placesOption); 
                     console.log(placesOption);
                 }
@@ -56,11 +69,16 @@ const Search = (props:any) => {
         }
     }
 
-    const handleClickSearch = () => {
+    const handleClickSearch = (index: number) => {
+        console.log('The link was clicked.');
+
+        let data = optionData[index];
+        // props.onChangeInput(data.place_name);
+        // props.onChangeLocation(data.coordinates);
+        
         setPlace("");
         setActiveIndex(-1);
 
-        console.log('The link was clicked.');
     }
 
     const getCoordinates = (position: any) => {
@@ -83,7 +101,7 @@ const Search = (props:any) => {
         }
         else if(keyCode === 13){
             // enterpress
-            handleClickSearch();
+            handleClickSearch(activeIndex);
 
         }else{
             setActiveIndex(-1);
