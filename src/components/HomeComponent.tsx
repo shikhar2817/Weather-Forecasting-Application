@@ -12,7 +12,6 @@ function InformationTabs(){
                 </Tab>
                 <Tab eventKey="hourly" title="Hourly">
                     <h1>Hourly Component</h1>
-                    
                 </Tab>
                 <Tab eventKey="daily" title="Daily">
                     <h1>Daily Component</h1>

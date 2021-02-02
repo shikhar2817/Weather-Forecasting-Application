@@ -10,22 +10,32 @@ const Search = (props:any) => {
     const [options, setOptions] = useState([<div></div>]);
     const [isActive , setIsActive] = useState(false);
     const [activeIndex, setActiveIndex] = useState(-1);
+    const searchBarRef = useRef<any>(null);
+
+    useEffect( () => {
+        document.addEventListener("mousedown", (event) => {
+            if(!searchBarRef.current.contains(event.target)){
+                setIsActive(false);
+            }
+        });
+    },[]);
 
     useEffect( () => {
             fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${place}.json?access_token=${mapboxAccessToken}`)
                 .then(response => response.json())
                 .then(data => {
                     let len = 0;
-                    // console.log(data.features.length);
                     if (data !== null && data.features) len = data.features.length;
                     let placesOption = [];
-    
+                    
                     for(let i = 0 ; i < Math.min(5,len); ++i){
                         let option = data.features[i].place_name;
+                        let coords = data.features[i].geometry.coordinates;
+                        console.log(data.features[i].geometry.coordinates);
                         const className = activeIndex === i ? 'autocomplete-item-active' : 'autocomplete-item'; 
                         placesOption.push(
-                            <div className={className}>
-                                <strong> {option.substr(0, place.length)} </strong> {option.substr(place.length)}
+                            <div className={className} onClick={handleClick} >
+                                <strong> {option.substr(0, place.length)}</strong>{option.substr(place.length)}
                             </div>
                         );
                     }
@@ -45,6 +55,11 @@ const Search = (props:any) => {
         }
     }
 
+    const handleClick = () => {
+        // e.preventDefault();
+        console.log('The link was clicked.');
+    }
+
     const getCoordinates = (position: any) => {
         // console.log(props);
         // console.log(position);
@@ -56,10 +71,19 @@ const Search = (props:any) => {
         console.log(activeIndex);
 
         if(keyCode === 40 ){
+            // downpress
             setActiveIndex((activeIndex+1)%options.length);
         }
         else if(keyCode === 38){
+            // uppress
             setActiveIndex(Math.abs((activeIndex+options.length-1)%options.length));
+        }
+        else if(keyCode === 13){
+            // enterpress
+            handleClick();
+
+        }else{
+            setActiveIndex(-1);
         }
     }
 
@@ -82,10 +106,12 @@ const Search = (props:any) => {
                             </div>
                             
                             <div className="row">
-                                <div className="col">
-                                    <div className="">
-                                        <Input onKeyDown={e => changeIndex(e.keyCode)} onFocus={() => setIsActive(true)} onBlur={() => setIsActive(false)} icon="search" placeholder="Search Location" onChange={event => setPlace(event.target.value)}  />
-                                        {(isActive)? options : <div></div>}
+                                <div ref={searchBarRef} className="col" onFocus={() => setIsActive(true)}>
+                                    <div >
+                                        <Input onKeyDown={e => changeIndex(e.keyCode)}  icon="search" placeholder="Search Location" onChange={event => setPlace(event.target.value)}  />
+                                        <div>
+                                            {(isActive)? options : <div></div>}
+                                        </div>
                                     </div>
                                 </div>
                                 <div className="ml-0">
