@@ -10,8 +10,9 @@ const Search = (props:any) => {
     const [options, setOptions] = useState([<div></div>]);
     const [isActive , setIsActive] = useState(false);
     const [activeIndex, setActiveIndex] = useState(-1);
-    const searchBarRef = useRef<any>(null);
 
+    const searchBarRef = useRef<any>(null);
+    
     useEffect( () => {
         document.addEventListener("mousedown", (event) => {
             if(!searchBarRef.current.contains(event.target)){
@@ -34,7 +35,7 @@ const Search = (props:any) => {
                         console.log(data.features[i].geometry.coordinates);
                         const className = activeIndex === i ? 'autocomplete-item-active' : 'autocomplete-item'; 
                         placesOption.push(
-                            <div className={className} onClick={handleClick} >
+                            <div className={className} onClick={handleClickSearch} >
                                 <strong> {option.substr(0, place.length)}</strong>{option.substr(place.length)}
                             </div>
                         );
@@ -55,8 +56,10 @@ const Search = (props:any) => {
         }
     }
 
-    const handleClick = () => {
-        // e.preventDefault();
+    const handleClickSearch = () => {
+        setPlace("");
+        setActiveIndex(-1);
+
         console.log('The link was clicked.');
     }
 
@@ -80,7 +83,7 @@ const Search = (props:any) => {
         }
         else if(keyCode === 13){
             // enterpress
-            handleClick();
+            handleClickSearch();
 
         }else{
             setActiveIndex(-1);
@@ -108,7 +111,13 @@ const Search = (props:any) => {
                             <div className="row">
                                 <div ref={searchBarRef} className="col" onFocus={() => setIsActive(true)}>
                                     <div >
-                                        <Input onKeyDown={e => changeIndex(e.keyCode)}  icon="search" placeholder="Search Location" onChange={event => setPlace(event.target.value)}  />
+                                        <Input 
+                                            onKeyDown={e => changeIndex(e.keyCode)}  
+                                            icon="search" 
+                                            placeholder="Search Location" 
+                                            value={place}
+                                            onChange={event => setPlace(event.target.value)} 
+                                        />
                                         <div>
                                             {(isActive)? options : <div></div>}
                                         </div>
