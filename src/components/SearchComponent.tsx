@@ -36,16 +36,7 @@ const Search = (props:any) => {
                     if (data !== null && data.features) len = data.features.length;
                     let placesOption = [];
                     let dataPlacesOption = [];
-
-                    for(let i = 0 ; i < Math.min(5,len); ++i){
-                        let option = data.features[i].place_name;
-                        let coords = data.features[i].geometry.coordinates;
-                        dataPlacesOption.push({
-                            place_name: option,
-                            coordinates: coords
-                        });
-                    }
-                    setOptionData(dataPlacesOption);
+                    
 
                     for(let i = 0 ; i < Math.min(5,len); ++i){
                         let option = data.features[i].place_name;
@@ -63,7 +54,7 @@ const Search = (props:any) => {
                         );
                     }
                     
-                    
+                    setOptionData(dataPlacesOption);
                     setOptions(placesOption); 
                     console.log(placesOption);
                 }
@@ -89,6 +80,8 @@ const Search = (props:any) => {
     }
 
     const handleClickSearch = (index: number) => {
+        if(index === -1) return;
+        
         console.log('The link was clicked.');
 
         let data = optionData[index];
@@ -168,7 +161,7 @@ const Search = (props:any) => {
                                 </div>
                                 <div className="ml-1">
                                     <InputGroupAddon addonType="append">
-                                        <Button color="success"> <i className="fa fa-search "> Search</i> </Button>  
+                                        <Button onClick={() => handleClickSearch(activeIndex)} color="success"> <i className="fa fa-search "> Search</i> </Button>  
                                     </InputGroupAddon>
                                 </div>
                             </div>

@@ -2,41 +2,35 @@ import React, { useState } from 'react';
 import Search from './SearchComponent';
 import Promotion from './PromotionComponent';
 import { Tab , Tabs, Col, Row, Container } from 'react-bootstrap';
+import './styles/componentStyles.css';
 
-function InformationTabs(){
-    return (
-        <div className="container mt-1">
-            <Tabs defaultActiveKey="now" transition={false} id="noanim-tab-example">
-                <Tab eventKey="now" title="Now">
-                    <h1>Now Component</h1>
-                </Tab>
-                <Tab eventKey="hourly" title="Hourly">
-                    <h1>Hourly Component</h1>
-                </Tab>
-                <Tab eventKey="daily" title="Daily">
-                    <h1>Daily Component</h1>
-                </Tab>
-                <Tab eventKey="monthly" title="Monthly">
-                    <h1>Monthly Component</h1>
-                </Tab>
-                <Tab eventKey="airquality" title="Airquality">
-                    <h1>Airquality Component</h1>
-                </Tab>
-                <Tab eventKey="radar" title="Radar">
-                    <h1>Radar Component</h1>
-                </Tab>
-            </Tabs>
-        </div>
-    );  
-}
 
 export default function Home () {
 
     const [coords , setCoords] = useState([77.2090,28.6139]); // format longitute, latitude
     const [location , setLocation] = useState('New Delhi');
+    const [day, setDay] = useState('videos/SunnyDay.mp4');
+    // tabs
+    const [isNowActive, setIsNowActive] = useState(true);
+    const [isHourlyActive, setIsHourlyActive] = useState(true);
+    const [isDailyActive, setIsDailyActive] = useState(true);
+    const [isMonthylActive, setIsMonthylActive] = useState(true);
+    const [isAirqualityActive, setIsAirqualityActive] = useState(true);
+    const [isRadarActive, setIsRadarActive] = useState(true);
+    const [isNewsActive, setIsNewsActive] = useState(true);
+    const [isAlertsActive, setIsAlertsActive] = useState(true);
+
+
+    useState( () => {
+        fetch(`someUrl`)
+            .then(response => response.json())
+            .then(data => {
+
+            });
+    } );
 
     return (
-        <div>
+        <>
             <Row noGutters={true} >
                 <Col sm={5}> 
                     <Promotion/> 
@@ -45,11 +39,42 @@ export default function Home () {
                     <Search onChangeInput={(value: string) => setLocation(value)} onChangeLocation={(value: any) => setCoords(value)} /> 
                 </Col>
             </Row>
-            <Container style={{marginTop:'20px'}} >
-                <h2> {location} </h2>
-                {coords[0]} and {coords[1]}
-            </Container>
-            <InformationTabs/>
-        </div>
+            <div className="weather-video">
+                <video
+                    autoPlay
+                    loop
+            
+                    style={{
+                        position: 'absolute',
+                        width: '100%',
+                        height: '45%',
+                        objectFit: 'cover',
+                        zIndex: -1,
+                    }}
+                >
+                    <source src={day} />
+                </video>
+                <Container style={{marginTop:'20px'}} >
+                    <h2> {location} </h2>
+                    {coords[0]} and {coords[1]}
+                    <hr/>
+                    <div style={{zIndex:20}} className="container mt-1 ml-1">
+                        <Row>
+                            <div className="tab-btn"> Now </div>
+                            <div className="tab-btn"> Hourly </div>
+                            <div className="tab-btn"> Daily </div>
+                            <div className="tab-btn"> Monthy </div>
+                            <div className="tab-btn"> Airquality </div>
+                            <div className="tab-btn"> Radar </div>
+                            <div className="tab-btn"> News </div>
+                            <div className="tab-btn"> Alerts </div>
+                        </Row>
+                        <Row>
+                            {isNowActive}
+                        </Row>
+                    </div>
+                </Container>
+            </div>    
+        </>
     );
 }
