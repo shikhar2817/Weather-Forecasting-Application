@@ -3,12 +3,20 @@ import Search from './SearchComponent';
 import Promotion from './PromotionComponent';
 import { Tab , Tabs, Col, Row, Container } from 'react-bootstrap';
 import './styles/componentStyles.css';
-
+// tabs components
+import NowTab from './Tabs/NowTabComponent';
+import HourlyTab from './Tabs/HourlyTabComponent';
+import DailyTab from './Tabs/DailyTabComponent';
+import MonthlyTab from './Tabs/MonthlyTabComponent';
+import AirqualityTab from './Tabs/AirqualityTabComponent';
+import RadarTab from './Tabs/RadarTabComponent';
+import NewsTab from './Tabs/NewsTabComponent';
+import AlertsTab from './Tabs/AlertsTabComponents';
 
 export default function Home () {
 
     const [coords , setCoords] = useState([77.2090,28.6139]); // format longitute, latitude
-    const [location , setLocation] = useState('New Delhi');
+    const [location , setLocation] = useState('Search for any Location');
     const [day, setDay] = useState('videos/SunnyDay.mp4');
     // tabs
     const [isNowActive, setIsNowActive] = useState(true);
@@ -55,7 +63,8 @@ export default function Home () {
                     <source src={day} />
                 </video>
                 <Container style={{marginTop:'20px'}} >
-                    <h2> {location} </h2>
+                    <br/>
+                    <h2 style={{color:'floralwhite'}}> {location} </h2>
                     {coords[0]} and {coords[1]}
                     <hr/>
                     <div style={{zIndex:20}} className="container mt-1 ml-1">
@@ -69,9 +78,10 @@ export default function Home () {
                             <div className="tab-btn"> News </div>
                             <div className="tab-btn"> Alerts </div>
                         </Row>
-                        <Row>
-                            {isNowActive}
-                        </Row>
+                        <Container>
+                            {isNowActive ? <NowTab/> : <div></div>}
+                            {isHourlyActive? ' ' : <div></div>}
+                        </Container>
                     </div>
                 </Container>
             </div>    
