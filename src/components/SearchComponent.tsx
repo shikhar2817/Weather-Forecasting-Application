@@ -41,7 +41,7 @@ const Search = (props:any) => {
                     for(let i = 0 ; i < Math.min(5,len); ++i){
                         let option = data.features[i].place_name;
                         let coords = data.features[i].geometry.coordinates;
-                        console.log(data.features[i].geometry.coordinates);
+                        // console.log(data.features[i].geometry.coordinates);
                         const className = activeIndex === i ? 'autocomplete-item-active' : 'autocomplete-item'; 
                         dataPlacesOption.push({
                             place_name: option,
@@ -56,7 +56,7 @@ const Search = (props:any) => {
                     
                     setOptionData(dataPlacesOption);
                     setOptions(placesOption); 
-                    console.log(placesOption);
+                    // console.log(placesOption);
                 }
             );
         
@@ -66,13 +66,13 @@ const Search = (props:any) => {
         if(navigator.geolocation){
             navigator.geolocation.getCurrentPosition(getCoordinates);
         }else{
-            console.log("Location Access Denied!!!");
+            // console.log("Location Access Denied!!!");
         }
     }
 
     const handleClickSearch2 = (data: LocationData) => {
-        console.log('The link was clicked.');
-        console.log(data);
+        // console.log('The link was clicked.');
+        // console.log(data);
         props.onChangeInput(data.place_name);
         props.onChangeLocation(data.coordinates);
         setPlace("");
@@ -82,10 +82,10 @@ const Search = (props:any) => {
     const handleClickSearch = (index: number) => {
         if(index === -1) return;
         
-        console.log('The link was clicked.');
+        // console.log('The link was clicked.');
 
         let data = optionData[index];
-        console.log(data);
+        // console.log(data);
         props.onChangeInput(data.place_name);
         props.onChangeLocation(data.coordinates);
         
@@ -101,8 +101,8 @@ const Search = (props:any) => {
     }
 
     const changeIndex = (keyCode: number) => {
-        console.log(keyCode);
-        console.log(activeIndex);
+        // console.log(keyCode);
+        // console.log(activeIndex);
 
         if(keyCode === 40 ){
             // downpress

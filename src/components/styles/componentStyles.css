@@ -78,6 +78,13 @@
   
 .tab-btn:hover {
     box-shadow: 1px 1px 25px 10px rgba(252, 252, 255, 0.4);
+    background-color: #f4f4f4;
+    color: #14bdb4;
+}
+
+.tab-btn:active {
+    background-color: #007f88;
+    color:antiquewhite;
 }
 
 .tab-btn:before {

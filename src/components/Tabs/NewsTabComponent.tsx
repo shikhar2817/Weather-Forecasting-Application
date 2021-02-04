@@ -1,7 +1,9 @@
+import './tabsStyles.css';
+import { Tab , Tabs, Col, Row, Container } from 'react-bootstrap';
 
 export default function NewsTab() {
     return (
-        <div>
+        <div className="make-visible">
             News Component
         </div>
     );
