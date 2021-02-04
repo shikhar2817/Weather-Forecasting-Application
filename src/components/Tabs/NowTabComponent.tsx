@@ -1,6 +1,6 @@
 import './tabsStyles.css';
 import { Tab , Tabs, Col, Row, Container } from 'react-bootstrap';
-import { Sun, Snow, CloudAndSun, Clouds, Rain } from '../../shared/WeatherIcons';
+import {  } from '../../shared/WeatherIcons';
 
 export default function NowTab() {
     return (
