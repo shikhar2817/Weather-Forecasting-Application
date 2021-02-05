@@ -97,7 +97,15 @@ const Search = (props:any) => {
     const getCoordinates = (position: any) => {
         // console.log(props);
         // console.log(position);
-        props.onChangeLocation([position.coords.latitude , position.coords.longitude]);
+        let lat = position.coords.latitude;
+        let lon = position.coords.longitude;
+        fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${lon},${lat}.json?access_token=${mapboxAccessToken}`)
+            .then(response => response.json())
+            .then(data => {
+                let place_name = data.features[1].place_name;
+                props.onChangeInput(place_name);
+                props.onChangeLocation([lat , lon]);
+            });
     }
 
     const changeIndex = (keyCode: number) => {

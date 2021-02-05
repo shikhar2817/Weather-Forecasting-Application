@@ -36,6 +36,9 @@ export default function Home () {
     const [coords , setCoords] = useState<number[]>([28.6139,77.2090]); // format longitute, latitude
     const [location , setLocation] = useState('New Delhi, India');
     const [day, setDay] = useState(days.default);
+    const [data, setData] = useState<any>('');
+    const [currentData , setCurrentData] = useState<any>('');
+    const [date, setDate] = useState<string>('');
     // tabs
     const [isNowActive, setIsNowActive] = useState(true);
     const [isHourlyActive, setIsHourlyActive] = useState(false);
@@ -46,14 +49,26 @@ export default function Home () {
     const [isNewsActive, setIsNewsActive] = useState(false);
     const [isAlertsActive, setIsAlertsActive] = useState(false);
 
-
     useEffect( () => {
+        fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${coords[0]}&lon=${coords[1]}&units=metric&appid=${openweathermapKey}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log("currnet", data);
+                setCurrentData(data);
+            });
+
         fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${coords[0]}&lon=${coords[1]}&units=metric&appid=${openweathermapKey}`)
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                setDay(days.default);
+                setData(data);
+                const date = new Date();
+                // console.log(date.toString());
+                setDate(date.toString());
             });
+        
+        
+        
     },[location,coords]);
 
     const handleActive = (tabName: string) => {
@@ -151,7 +166,7 @@ export default function Home () {
                     style={{
                         position: 'absolute',
                         width: '100%',
-                        height: '45%',
+                        height: '100%',
                         objectFit: 'cover',
                         zIndex: -1,
                     }}
@@ -159,8 +174,16 @@ export default function Home () {
                     <source src={day} />
                 </video>
                 <Container style={{marginTop:'20px'}} >
-                    <br/>
-                    <h2 style={{color:'floralwhite'}}> {location} </h2>
+                    <Container style={{color:'floralwhite'}}>
+                        <br/>
+                        <h2> {location} </h2>
+                        <p> {date}</p>
+                        <Row>
+                            <h2> {currentData.main.temp} °C</h2>
+                            
+                        </Row>    
+                        
+                    </Container>
                     <hr/>
                     {/* {coords[0]} and {coords[1]} */}
                     <div style={{zIndex:0}} className="container mt-1 ml-1">
@@ -174,8 +197,9 @@ export default function Home () {
                             <div className="tab-btn" onClick={() => handleActive('news')}> News </div>
                             <div className="tab-btn" onClick={() => handleActive('alert')}> Alerts </div>
                         </Row>
+                        <hr/>
                         <Container>
-                            {isNowActive ? <NowTab/> : <div></div>}
+                            {isNowActive ? <NowTab data={currentData}/> : <div></div>}
                             {isHourlyActive ? <HourlyTab/> : <div></div>}
                             {isDailyActive ? <DailyTab/> : <div></div>}
                             {isMonthlyActive ? <MonthlyTab/> : <div></div>}
