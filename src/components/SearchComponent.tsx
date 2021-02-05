@@ -74,7 +74,7 @@ const Search = (props:any) => {
         // console.log('The link was clicked.');
         // console.log(data);
         props.onChangeInput(data.place_name);
-        props.onChangeLocation(data.coordinates);
+        props.onChangeLocation([data.coordinates[1],data.coordinates[0]]);
         setPlace("");
         setActiveIndex(-1);
     }
@@ -87,7 +87,7 @@ const Search = (props:any) => {
         let data = optionData[index];
         // console.log(data);
         props.onChangeInput(data.place_name);
-        props.onChangeLocation(data.coordinates);
+        props.onChangeLocation([data.coordinates[1],data.coordinates[0]]);
         
         setPlace("");
         setActiveIndex(-1);

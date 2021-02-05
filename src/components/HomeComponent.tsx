@@ -19,7 +19,6 @@ import RadarTab from './Tabs/RadarTabComponent';
 import NewsTab from './Tabs/NewsTabComponent';
 import AlertsTab from './Tabs/AlertsTabComponents';
 
-// https://api.openweathermap.org/data/2.5/onecall?lat=26.4118307&lon=80.3814702&units=metric&appid=bee0b4a676e5cc914c650a3e4c5320f0
 export default function Home () {
 
     const days = {
@@ -33,10 +32,12 @@ export default function Home () {
         storm: 'videos/Storm.mp4' 
     }
 
+    const [icon, setIcon] = useState<string>('icons/01d.svg');
+    const [ok, setOk] = useState(false);
     const [coords , setCoords] = useState<number[]>([28.6139,77.2090]); // format longitute, latitude
     const [location , setLocation] = useState('New Delhi, India');
     const [day, setDay] = useState(days.default);
-    const [data, setData] = useState<any>('');
+    const [allData, setAllData] = useState<any>('');
     const [currentData , setCurrentData] = useState<any>('');
     const [date, setDate] = useState<string>('');
     // tabs
@@ -55,13 +56,16 @@ export default function Home () {
             .then(data => {
                 console.log("currnet", data);
                 setCurrentData(data);
+                setOk(true);
+                let icon_path = "icons/" + data.weather[0].icon + ".svg";
+                setIcon(icon_path);
             });
 
         fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${coords[0]}&lon=${coords[1]}&units=metric&appid=${openweathermapKey}`)
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                setData(data);
+                setAllData(data);
                 const date = new Date();
                 // console.log(date.toString());
                 setDate(date.toString());
@@ -148,6 +152,10 @@ export default function Home () {
         
     }
 
+    const giveIcon = (name : string) => {
+        return ;
+    }
+
     return (
         <>
             <Row noGutters={true} >
@@ -173,17 +181,29 @@ export default function Home () {
                 >
                     <source src={day} />
                 </video>
+                
                 <Container style={{marginTop:'20px'}} >
-                    <Container style={{color:'floralwhite'}}>
-                        <br/>
-                        <h2> {location} </h2>
-                        <p> {date}</p>
-                        <Row>
-                            <h2> {currentData.main.temp} °C</h2>
+                    {ok ?
+                        <Container style={{color:'floralwhite'}}>
+                            <br/>
+                            <h2> {location} </h2>
+                            <p> Latitude: {currentData.coord.lat}, Longitude: {currentData.coord.lon}</p>
+                            <p> {date}</p>
                             
-                        </Row>    
-                        
-                    </Container>
+                                <Row style={{marginLeft:'20px'}}>
+                                    <img className="major-icons" src={icon} />
+                                    <Col style={{marginLeft:'20px'}}>
+                                        <h2> {currentData.main.feels_like} °C</h2>
+                                        <p style={{marginTop:'-10px'}}> Feels like</p>
+                                        <p> <h3> {currentData.weather[0].description} </h3> </p>
+                                    </Col>
+                                </Row>
+                                
+                               
+                            
+                        </Container>
+                        :<div></div>
+                    } 
                     <hr/>
                     {/* {coords[0]} and {coords[1]} */}
                     <div style={{zIndex:0}} className="container mt-1 ml-1">

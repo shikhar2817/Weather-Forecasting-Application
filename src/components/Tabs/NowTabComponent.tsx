@@ -8,7 +8,7 @@ export default function NowTab(props: any) {
         <div className="make-visible">
             <h3>Now</h3>
             <div>
-
+                
             </div>
         </div>
     );

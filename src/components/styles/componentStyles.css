@@ -106,3 +106,13 @@
 .tab-btn:hover:before {
     left: 100%;
 }
+
+.minor-icons{
+    width: 30px;
+    height: 30px;
+}
+
+.major-icons{
+    width: 100px;
+    height: 100px;
+}
