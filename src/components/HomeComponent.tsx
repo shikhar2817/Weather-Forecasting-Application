@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Tab , Tabs, Col, Row, Container } from 'react-bootstrap';
 
 // APIs
-import { openweathermapKey } from '../shared/API';
+import { openweathermapKey, darkSkyKey } from '../shared/API';
 
 // components
 import Search from './SearchComponent';
@@ -37,8 +37,7 @@ export default function Home () {
     const [coords , setCoords] = useState<number[]>([28.6139,77.2090]); // format longitute, latitude
     const [location , setLocation] = useState('New Delhi, India');
     const [day, setDay] = useState(days.default);
-    const [allData, setAllData] = useState<any>('');
-    const [currentData , setCurrentData] = useState<any>('');
+    const [data, setData] = useState<any>('');
     const [date, setDate] = useState<string>('');
     // tabs
     const [isNowActive, setIsNowActive] = useState(true);
@@ -51,28 +50,17 @@ export default function Home () {
     const [isAlertsActive, setIsAlertsActive] = useState(false);
 
     useEffect( () => {
-        fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${coords[0]}&lon=${coords[1]}&units=metric&appid=${openweathermapKey}`)
-            .then(response => response.json())
-            .then(data => {
-                console.log("currnet", data);
-                setCurrentData(data);
-                setOk(true);
-                let icon_path = "icons/" + data.weather[0].icon + ".svg";
-                setIcon(icon_path);
-            });
-
-        fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${coords[0]}&lon=${coords[1]}&units=metric&appid=${openweathermapKey}`)
+        fetch(`https://api.darksky.net/forecast/${darkSkyKey}/${coords[0]},${coords[1]}?units=si`)
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                setAllData(data);
+                setData(data);
+                setOk(true);
+                let icon_path = "icons/" + data.currently.icon + ".svg";
+                setIcon(icon_path);
                 const date = new Date();
-                // console.log(date.toString());
                 setDate(date.toString());
             });
-        
-        
-        
     },[location,coords]);
 
     const handleActive = (tabName: string) => {
@@ -152,10 +140,6 @@ export default function Home () {
         
     }
 
-    const giveIcon = (name : string) => {
-        return ;
-    }
-
     return (
         <>
             <Row noGutters={true} >
@@ -187,18 +171,18 @@ export default function Home () {
                         <Container style={{color:'floralwhite'}}>
                             <br/>
                             <h2> {location} </h2>
-                            <p> Latitude: {currentData.coord.lat}, Longitude: {currentData.coord.lon}</p>
+                            <p> Latitude: {data.latitude}, Longitude: {data.longitude}</p>
                             <p> {date}</p>
                             
-                                <Row style={{marginLeft:'20px'}}>
+                                <Row style={{marginLeft:'15px'}}>
                                     <img className="major-icons" src={icon} />
-                                    <Col style={{marginLeft:'20px'}}>
-                                        <h2> {currentData.main.feels_like} °C</h2>
+                                    <Col style={{marginLeft:'15px'}}>
+                                        <h2> {data.currently.temperature} °C</h2>
                                         <p style={{marginTop:'-10px'}}> Feels like</p>
-                                        <p> <h3> {currentData.weather[0].description} </h3> </p>
+                                        <p style={{marginTop:'-10px'}}> <h3> {data.currently.summary} </h3> </p>
+                                        <h4 style={{marginTop:'-10px'}}>{data.currently.precipProbability * 100}% chance of rain </h4>
                                     </Col>
                                 </Row>
-                                
                                
                             
                         </Container>
@@ -219,7 +203,7 @@ export default function Home () {
                         </Row>
                         <hr/>
                         <Container>
-                            {isNowActive ? <NowTab data={currentData}/> : <div></div>}
+                            {isNowActive ? <NowTab data={data.currently}/> : <div></div>}
                             {isHourlyActive ? <HourlyTab/> : <div></div>}
                             {isDailyActive ? <DailyTab/> : <div></div>}
                             {isMonthlyActive ? <MonthlyTab/> : <div></div>}

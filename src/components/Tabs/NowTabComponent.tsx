@@ -7,9 +7,16 @@ export default function NowTab(props: any) {
     return (
         <div className="make-visible">
             <h3>Now</h3>
-            <div>
-                
-            </div>
+            <Container>
+                <Row>
+                    <Col md={6}>
+                        High/Low : {}
+                    </Col>
+                    <Col md={6}>
+                        Some text 2
+                    </Col>
+                </Row>
+            </Container>
         </div>
     );
 };
