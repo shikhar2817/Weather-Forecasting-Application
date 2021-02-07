@@ -14,3 +14,7 @@
     border-radius: 25px;
     margin-bottom: 5px;
 }
+
+.corner{
+    flex-flow: row-reverse;
+}
