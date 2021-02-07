@@ -50,7 +50,7 @@ export default function Home () {
     const [isAlertsActive, setIsAlertsActive] = useState(false);
 
     useEffect( () => {
-        fetch(`https://api.darksky.net/forecast/${darkSkyKey}/${coords[0]},${coords[1]}?units=si`)
+        fetch(`https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/${darkSkyKey}/${coords[0]},${coords[1]}?units=si`)
             .then(response => response.json())
             .then(data => {
                 console.log(data);
@@ -202,17 +202,20 @@ export default function Home () {
                             <div className="tab-btn" onClick={() => handleActive('alert')}> Alerts </div>
                         </Row>
                         <hr/>
-                        <Container>
-                            {isNowActive ? <NowTab data={data.currently}/> : <div></div>}
-                            {isHourlyActive ? <HourlyTab/> : <div></div>}
-                            {isDailyActive ? <DailyTab/> : <div></div>}
-                            {isMonthlyActive ? <MonthlyTab/> : <div></div>}
-                            {isAirqualityActive ? <AirqualityTab/> : <div></div>}
-                            {isRadarActive ? <RadarTab/> : <div></div>}
-                            {isNewsActive ? <NewsTab/> : <div></div>}
-                            {isAlertsActive ? <AlertsTab/> : <div></div>}
+                        {ok ? 
+                            <Container>
+                                {isNowActive ? <NowTab data={data}/> : <div></div>}
+                                {isHourlyActive ? <HourlyTab/> : <div></div>}
+                                {isDailyActive ? <DailyTab/> : <div></div>}
+                                {isMonthlyActive ? <MonthlyTab/> : <div></div>}
+                                {isAirqualityActive ? <AirqualityTab/> : <div></div>}
+                                {isRadarActive ? <RadarTab/> : <div></div>}
+                                {isNewsActive ? <NewsTab/> : <div></div>}
+                                {isAlertsActive ? <AlertsTab/> : <div></div>}
                             
-                        </Container>
+                            </Container>
+                            : <div></div>
+                        }
                     </div>
                 </Container>
             </div>    
