@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Tab , Tabs, Col, Row, Container } from 'react-bootstrap';
+import Moment from 'react-moment';
 
 // APIs
 import { openweathermapKey, darkSkyKey } from '../shared/API';
@@ -38,7 +39,7 @@ export default function Home () {
     const [location , setLocation] = useState('New Delhi, India');
     const [day, setDay] = useState(days.default);
     const [data, setData] = useState<any>('');
-    const [date, setDate] = useState<string>('');
+    const [date, setDate] = useState<number>();
     // tabs
     const [isNowActive, setIsNowActive] = useState(true);
     const [isHourlyActive, setIsHourlyActive] = useState(false);
@@ -58,8 +59,7 @@ export default function Home () {
                 setOk(true);
                 let icon_path = "icons/" + data.currently.icon + ".svg";
                 setIcon(icon_path);
-                const date = new Date();
-                setDate(date.toString());
+                setDate(data.currently.time);
             });
     },[location,coords]);
 
@@ -141,7 +141,22 @@ export default function Home () {
     }
 
     return (
-        <>
+        <div className="weather-video">
+            <video
+                autoPlay
+                loop
+                
+                style={{
+                    marginTop: '-60px',
+                    position: 'fixed',
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    zIndex: -2,
+                }}
+            >
+                <source src={day} />
+            </video>
             <Row noGutters={true} >
                 <Col sm={5}> 
                     <Promotion/> 
@@ -150,13 +165,13 @@ export default function Home () {
                     <Search onChangeInput={(value: string) => setLocation(value)} onChangeLocation={(value: any) => setCoords(value)} /> 
                 </Col>
             </Row>
-            <div className="weather-video">
-                <video
+            <div>
+                {/* <video
                     autoPlay
                     loop
                     
                     style={{
-                        position: 'absolute',
+                        position: 'fixed',
                         width: '100%',
                         height: '100%',
                         objectFit: 'cover',
@@ -164,7 +179,7 @@ export default function Home () {
                     }}
                 >
                     <source src={day} />
-                </video>
+                </video> */}
                 
                 <Container style={{marginTop:'20px'}} >
                     {ok ?
@@ -172,7 +187,7 @@ export default function Home () {
                             <br/>
                             <h2> {location} </h2>
                             <p> Latitude: {data.latitude}, Longitude: {data.longitude}</p>
-                            <p> {date}</p>
+                            <p> <Moment unix>{date}</Moment> ( {data.timezone} ) </p>
                             
                                 <Row style={{marginLeft:'15px'}}>
                                     <img className="major-icons" src={icon} />
@@ -219,6 +234,6 @@ export default function Home () {
                     </div>
                 </Container>
             </div>    
-        </>
+        </div>
     );
 }

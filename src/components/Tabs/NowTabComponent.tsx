@@ -1,7 +1,5 @@
 import './tabsStyles.css';
 import { Tab , Tabs, Col, Row, Container } from 'react-bootstrap';
-import Moment from 'react-moment';
-
 
 export default function NowTab(props: any) {
     console.log(props);
@@ -17,7 +15,7 @@ export default function NowTab(props: any) {
             <Container>
                 <Row>
                     <Col className="clean-box-cap">
-                        {props.data.daily.data[0].summary} And also there is {props.data.daily.data[0].precipProbability * 100}% chance of rain.
+                        {props.data.daily.data[0].summary} And also there is {Math.round(props.data.daily.data[0].precipProbability * 100)}% chance of rain.
                     </Col>
                 </Row>
                 <Row xs={2} md={4} className="clean-box">
@@ -43,7 +41,7 @@ export default function NowTab(props: any) {
                     <Col>Wind : </Col>
                     <Col> {props.data.daily.data[0].windSpeed} m/sec </Col>
                     <Col>Wind Direction : </Col>
-                    <Col> {props.data.daily.data[0].windBearing}° Km </Col>
+                    <Col> {props.data.daily.data[0].windBearing}° </Col>
                 </Row>
                 <Row xs={2} md={4} className="clean-box">
                     <Col>Wind Gust : </Col>
