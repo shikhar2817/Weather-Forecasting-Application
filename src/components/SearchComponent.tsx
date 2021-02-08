@@ -22,6 +22,7 @@ const Search = (props:any) => {
     
     useEffect( () => {
         document.addEventListener("mousedown", (event) => {
+            if(searchBarRef.current.contains(event.target) !== null)
             if(!searchBarRef.current.contains(event.target)){
                 setIsActive(false);
             }

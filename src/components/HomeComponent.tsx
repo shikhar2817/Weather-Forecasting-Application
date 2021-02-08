@@ -220,13 +220,13 @@ export default function Home () {
                         {ok ? 
                             <Container>
                                 {isNowActive ? <NowTab data={data}/> : <div></div>}
-                                {isHourlyActive ? <HourlyTab/> : <div></div>}
-                                {isDailyActive ? <DailyTab/> : <div></div>}
-                                {isMonthlyActive ? <MonthlyTab/> : <div></div>}
-                                {isAirqualityActive ? <AirqualityTab/> : <div></div>}
-                                {isRadarActive ? <RadarTab/> : <div></div>}
-                                {isNewsActive ? <NewsTab/> : <div></div>}
-                                {isAlertsActive ? <AlertsTab/> : <div></div>}
+                                {isHourlyActive ? <HourlyTab data={data}/> : <div></div>}
+                                {isDailyActive ? <DailyTab data={data}/> : <div></div>}
+                                {isMonthlyActive ? <MonthlyTab data={data}/> : <div></div>}
+                                {isAirqualityActive ? <AirqualityTab data={data}/> : <div></div>}
+                                {isRadarActive ? <RadarTab data={data}/> : <div></div>}
+                                {isNewsActive ? <NewsTab data={data}/> : <div></div>}
+                                {isAlertsActive ? <AlertsTab data={data}/> : <div></div>}
                             
                             </Container>
                             : <div></div>
