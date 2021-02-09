@@ -14,7 +14,6 @@ import './styles/componentStyles.css';
 import NowTab from './Tabs/NowTabComponent';
 import HourlyTab from './Tabs/HourlyTabComponent';
 import DailyTab from './Tabs/DailyTabComponent';
-import MonthlyTab from './Tabs/MonthlyTabComponent';
 import AirqualityTab from './Tabs/AirqualityTabComponent';
 import RadarTab from './Tabs/RadarTabComponent';
 import NewsTab from './Tabs/NewsTabComponent';
@@ -44,7 +43,6 @@ export default function Home () {
     const [isNowActive, setIsNowActive] = useState(true);
     const [isHourlyActive, setIsHourlyActive] = useState(false);
     const [isDailyActive, setIsDailyActive] = useState(false);
-    const [isMonthlyActive, setIsMonthlyActive] = useState(false);
     const [isAirqualityActive, setIsAirqualityActive] = useState(false);
     const [isRadarActive, setIsRadarActive] = useState(false);
     const [isNewsActive, setIsNewsActive] = useState(false);
@@ -70,7 +68,6 @@ export default function Home () {
             setIsDailyActive(false);
             setIsHourlyActive(false);
             setIsRadarActive(false);
-            setIsMonthlyActive(false);
             setIsNowActive(false);
             setIsNewsActive(false);
         }else if(tabName === "alert"){
@@ -79,7 +76,6 @@ export default function Home () {
             setIsDailyActive(false);
             setIsHourlyActive(false);
             setIsRadarActive(false);
-            setIsMonthlyActive(false);
             setIsNowActive(false);
             setIsNewsActive(false);
         }else if(tabName === "daily"){
@@ -88,7 +84,6 @@ export default function Home () {
             setIsDailyActive(true);
             setIsHourlyActive(false);
             setIsRadarActive(false);
-            setIsMonthlyActive(false);
             setIsNowActive(false);
             setIsNewsActive(false);
         }else if(tabName === "hourly"){
@@ -97,7 +92,6 @@ export default function Home () {
             setIsDailyActive(false);
             setIsHourlyActive(true);
             setIsRadarActive(false);
-            setIsMonthlyActive(false);
             setIsNowActive(false);
             setIsNewsActive(false);
         }else if(tabName === "radar"){
@@ -106,7 +100,6 @@ export default function Home () {
             setIsDailyActive(false);
             setIsHourlyActive(false);
             setIsRadarActive(true);
-            setIsMonthlyActive(false);
             setIsNowActive(false);
             setIsNewsActive(false);
         }else if(tabName === "monthly"){
@@ -114,9 +107,7 @@ export default function Home () {
             setIsAlertsActive(false);
             setIsDailyActive(false);
             setIsHourlyActive(false);
-            setIsRadarActive(false);
-            setIsMonthlyActive(true);
-            setIsNowActive(false);
+            setIsRadarActive(false);            setIsNowActive(false);
             setIsNewsActive(false);
         }else if(tabName === "now"){
             setIsAirqualityActive(false);
@@ -124,7 +115,6 @@ export default function Home () {
             setIsDailyActive(false);
             setIsHourlyActive(false);
             setIsRadarActive(false);
-            setIsMonthlyActive(false);
             setIsNowActive(true);
             setIsNewsActive(false);
         }else if(tabName === "news"){
@@ -133,7 +123,6 @@ export default function Home () {
             setIsDailyActive(false);
             setIsHourlyActive(false);
             setIsRadarActive(false);
-            setIsMonthlyActive(false);
             setIsNowActive(false);
             setIsNewsActive(true);
         }
@@ -226,7 +215,6 @@ export default function Home () {
                                 {isNowActive ? <NowTab data={data}/> : <div></div>}
                                 {isHourlyActive ? <HourlyTab data={data}/> : <div></div>}
                                 {isDailyActive ? <DailyTab data={data}/> : <div></div>}
-                                {isMonthlyActive ? <MonthlyTab data={data}/> : <div></div>}
                                 {isAirqualityActive ? <AirqualityTab data={data}/> : <div></div>}
                                 {isRadarActive ? <RadarTab data={data}/> : <div></div>}
                                 {isNewsActive ? <NewsTab data={data}/> : <div></div>}

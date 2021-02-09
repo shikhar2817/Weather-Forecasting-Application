@@ -19,6 +19,7 @@ export default function DailyTab(props: any) {
 
     return (
         <div className="make-visible">
+            <h2>Daily Forecast</h2>
             {ok ? 
                 <div>
                     {props.data.daily.data.map((item:any) => {

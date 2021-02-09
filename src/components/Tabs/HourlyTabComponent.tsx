@@ -17,9 +17,7 @@ export default function HourlyTab(props: any) {
 
     return (
         <div className="make-visible">
-            <div> 
-                <h2 > Hourly Forecast </h2>
-            </div>
+            <h2 > Hourly Forecast </h2>
             {ok ? 
                 <div>
                     {props.data.hourly.data.map((item:any) => {
