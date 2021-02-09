@@ -11,7 +11,7 @@ export default function NowTab(props: any) {
 
     return (
         <div className="make-visible">
-            <h3>Now</h3>
+            <h2>Now</h2>
             <Container>
                 <Row>
                     <Col className="clean-box-cap">

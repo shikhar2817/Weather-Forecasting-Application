@@ -195,8 +195,12 @@ export default function Home () {
                                         <h2> {data.currently.temperature} °C</h2>
                                         <p style={{marginTop:'-10px'}}> Feels like</p>
                                         <p style={{marginTop:'-10px'}}> <h3> {data.currently.summary} </h3> </p>
-                                        <h4 style={{marginTop:'-10px'}}>{data.currently.precipProbability * 100}% chance of rain </h4>
+                                        <div style={{marginTop:'-10px'}}>{data.currently.precipProbability * 100}% chance of rain right now </div>
                                     </Col>
+                                </Row>
+                                <Row>
+                                    <Col> <img className="mini-icons" src={`icons/${data.hourly.icon}.svg`} /> {data.hourly.summary} </Col>
+                                    <Col> <img className="mini-icons" src={`icons/${data.daily.icon}.svg`} /> {data.daily.summary} </Col>
                                 </Row>
                                
                             

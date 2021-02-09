@@ -17,13 +17,16 @@ export default function HourlyTab(props: any) {
 
     return (
         <div className="make-visible">
-            
+            <div> 
+                <h2 > Hourly Forecast </h2>
+            </div>
             {ok ? 
                 <div>
                     {props.data.hourly.data.map((item:any) => {
                         let icon_path = "icons/" + item.icon + ".svg";
                         return(
-                            <Container className="clean-box">
+                            <div className="clean-box">
+                                
                                 <Row>
                                     <Col xs={3}> <img className="minor-icons" src={icon_path} /> </Col>
                                     {/* <Col>Time : </Col>  */}
@@ -31,10 +34,10 @@ export default function HourlyTab(props: any) {
                                     <Col>{item.temperature} °C</Col>
                                 </Row>
                                 <Row >
-                                    <Col xs={3}>{item.summary}</Col> <Col xs={8}>{Math.round(item.precipProbability)*100}% chance of rain</Col>
-                                    <Col xs={5}> </Col>
+                                    <Col>{item.summary} and there is {Math.round(item.precipProbability)*100}% chance of rain.</Col> 
+                                    {/* <Col xs={5}> </Col> */}
                                 </Row>
-                                <Row xs={2} md={4} className="clean-box">
+                                <Row xs={2} md={4} >
                                     <Col>Wind : </Col> <Col> {item.windSpeed} m/sec </Col>
                                     <Col xs={7}>Wind Direction : </Col> <Col xs={1}> {item.windBearing}° </Col>
                                     <Col>Humidity : </Col> <Col> {Math.round(item.humidity*100)}% </Col>
@@ -43,7 +46,7 @@ export default function HourlyTab(props: any) {
                                     <Col>Ozone : </Col> <Col> {item.ozone} DU </Col>
 
                                 </Row>
-                            </Container>
+                            </div>
                         );
                     } )}
                 </div>
