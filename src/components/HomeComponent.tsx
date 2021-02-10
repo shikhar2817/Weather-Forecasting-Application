@@ -184,7 +184,7 @@ export default function Home () {
                                         <h2> {data.currently.temperature} °C</h2>
                                         <p style={{marginTop:'-10px'}}> Feels like</p>
                                         <p style={{marginTop:'-10px'}}> <h3> {data.currently.summary} </h3> </p>
-                                        <div style={{marginTop:'-10px'}}>{data.currently.precipProbability * 100}% chance of rain right now </div>
+                                        <div style={{marginTop:'-10px'}}>{Math.round(data.currently.precipProbability * 100)}% chance of rain right now </div>
                                     </Col>
                                 </Row>
                                 <Row>
@@ -203,7 +203,6 @@ export default function Home () {
                             <div className="tab-btn" onClick={() => handleActive('now')}> Now </div>
                             <div className="tab-btn" onClick={() => handleActive('hourly')}> Hourly </div>
                             <div className="tab-btn" onClick={() => handleActive('daily')}> Daily </div>
-                            <div className="tab-btn" onClick={() => handleActive('monthly')}> Monthy </div>
                             <div className="tab-btn" onClick={() => handleActive('airquality')}> Airquality </div>
                             <div className="tab-btn" onClick={() => handleActive('radar')}> Radar </div>
                             <div className="tab-btn" onClick={() => handleActive('news')}> News </div>
