@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Tab , Tabs, Col, Row, Container } from 'react-bootstrap';
+import { Col, Row, Container, Badge } from 'react-bootstrap';
 import Moment from 'react-moment';
 
 // APIs
@@ -39,6 +39,7 @@ export default function Home () {
     const [day, setDay] = useState(days.default);
     const [data, setData] = useState<any>('');
     const [date, setDate] = useState<number>();
+    const [alertCount, setAlertCount] = useState(0);
     // tabs
     const [isNowActive, setIsNowActive] = useState(true);
     const [isHourlyActive, setIsHourlyActive] = useState(false);
@@ -58,6 +59,8 @@ export default function Home () {
                 let icon_path = "icons/" + data.currently.icon + ".svg";
                 setIcon(icon_path);
                 setDate(data.currently.time);
+                if(data.alerts !== undefined) 
+                    setAlertCount(data.alerts.length);
             });
     },[location,coords]);
 
@@ -206,7 +209,7 @@ export default function Home () {
                             <div className="tab-btn" onClick={() => handleActive('airquality')}> Airquality </div>
                             <div className="tab-btn" onClick={() => handleActive('radar')}> Radar </div>
                             <div className="tab-btn" onClick={() => handleActive('news')}> News </div>
-                            <div className="tab-btn" onClick={() => handleActive('alert')}> Alerts </div>
+                            <div className="tab-btn" onClick={() => handleActive('alert')}> Alerts <Badge style={{marginLeft:"2px"}} variant="danger">{alertCount}</Badge> </div>
                         </Row>
                         <hr/>
                         {ok ? 

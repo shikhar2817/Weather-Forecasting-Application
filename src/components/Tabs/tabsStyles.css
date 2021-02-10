@@ -20,3 +20,17 @@
 .corner{
     flex-flow: row-reverse;
 }
+
+.alert-div{
+    border: 1px solid floralwhite;
+}
+
+.alert-deco{
+    text-decoration: none;
+    color: floralwhite;
+}
+.alert-deco:hover, .alert-deco:active {
+    text-decoration: none;
+    background-color:transparent;
+    color: floralwhite;
+  }
