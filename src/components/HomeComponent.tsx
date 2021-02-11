@@ -40,6 +40,7 @@ export default function Home () {
     const [data, setData] = useState<any>('');
     const [date, setDate] = useState<number>();
     const [alertCount, setAlertCount] = useState(0);
+    const [airData, setAirData] = useState();
     // tabs
     const [isNowActive, setIsNowActive] = useState(true);
     const [isHourlyActive, setIsHourlyActive] = useState(false);
@@ -62,6 +63,13 @@ export default function Home () {
                 if(data.alerts !== undefined) 
                     setAlertCount(data.alerts.length);
             });
+
+        fetch(`http://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[0]}&lon=${coords[0]}&appid=${openweathermapKey}`)
+            .then(response => response.json())
+            .then(data => {
+                setAirData(data);
+            });
+
     },[location,coords]);
 
     const handleActive = (tabName: string) => {
@@ -217,7 +225,7 @@ export default function Home () {
                                 {isNowActive ? <NowTab data={data}/> : <div></div>}
                                 {isHourlyActive ? <HourlyTab data={data}/> : <div></div>}
                                 {isDailyActive ? <DailyTab data={data}/> : <div></div>}
-                                {isAirqualityActive ? <AirqualityTab data={data}/> : <div></div>}
+                                {isAirqualityActive ? <AirqualityTab data={airData}/> : <div></div>}
                                 {isRadarActive ? <RadarTab data={data}/> : <div></div>}
                                 {isNewsActive ? <NewsTab data={data}/> : <div></div>}
                                 {isAlertsActive ? <AlertsTab data={data}/> : <div></div>}

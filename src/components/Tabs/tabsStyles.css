@@ -23,6 +23,11 @@
 
 .alert-div{
     border: 1px solid floralwhite;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.alert-div:hover{
+    background-color: #ff00005e;
 }
 
 .alert-deco{
@@ -31,6 +36,13 @@
 }
 .alert-deco:hover, .alert-deco:active {
     text-decoration: none;
-    background-color:transparent;
+    background-color: transparent;
     color: floralwhite;
-  }
+}
+
+.aqi-badge{
+    background-color: #1eff005e;
+    padding: 10px;
+    color: floralwhite;
+    border-radius: 25px;
+}

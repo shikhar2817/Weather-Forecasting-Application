@@ -2,7 +2,7 @@ import './tabsStyles.css';
 import { Tab , Tabs, Col, Row, Container } from 'react-bootstrap';
 
 export default function NowTab(props: any) {
-    console.log(props);
+    // console.log(props);
 
     const convertTimeStamp = (unixTimestamp: number) => {
         let time = new Date(unixTimestamp * 1000).toLocaleTimeString("en-US");
