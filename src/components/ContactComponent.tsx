@@ -16,32 +16,32 @@ export default function Contact(){
             </div>
             <div className="row row-content">
                 <div className="col-12 col-sm-4 offset-sm-1">
-                        <h5>Our Address</h5>
-                        <br/>
-                        <address>
-                        <i className="fa fa-home"></i>: Plot Number 271, Home Number 9/96,<br />
-                        &nbsp; &nbsp;&nbsp; Indripuri Gandhi Gram, Kanpur-7<br />
-                        &nbsp; &nbsp;&nbsp; Pin Code: 208007, <br/>
-                        &nbsp; &nbsp;&nbsp; Uttar Pradesh, <br/>
-                        &nbsp; &nbsp;&nbsp; India<br />
-                        <br/>
-                        <i className="fa fa-phone"></i>: +91 9140269982<br />
-                        <br/>
-                        <i className="fa fa-envelope"></i>: <a href="mailto:shikharsingh0076@gmail.com">shikharsingh0076@gmail.com</a>
-                        </address>
-                        <div>
-                        <br/>
-                        <div className="btn-group" role="group">
-                            <a role="button" className="btn btn-success" href="tel:+91 9140269982"><i className="fa fa-phone"></i></a>
-                            <a role="button" className="btn btn-danger" href="https://www.instagram.com/shikhar_singh_2817/"> <i className="fa fa-instagram"></i> </a>
-                            <a role="button" href="https://github.com/shikhar2817" className="btn btn-dark"><i className="fa fa-github"></i> </a>
-                            <a href="https://www.linkedin.com/in/shikhar-singh-b6134b137/" className="btn btn-primary"><i className="fa fa-linkedin"></i></a>
-                            <a role="button" className="btn btn-danger" href="mailto:shikharsingh0076@gmail.com"><i className="fa fa-envelope-o"></i> </a>
-                        </div>
-                        <p></p>
+                    <h5>Our Address</h5>
+                    <br/>
+                    <address>
+                    <i className="fa fa-home"></i>: Plot Number 271, Home Number 9/96,<br />
+                    &nbsp; &nbsp;&nbsp; Indripuri Gandhi Gram, Kanpur-7<br />
+                    &nbsp; &nbsp;&nbsp; Pin Code: 208007, <br/>
+                    &nbsp; &nbsp;&nbsp; Uttar Pradesh, <br/>
+                    &nbsp; &nbsp;&nbsp; India<br />
+                    <br/>
+                    <i className="fa fa-phone"></i>: +91 9140269982<br />
+                    <br/>
+                    <i className="fa fa-envelope"></i>: <a href="mailto:shikharsingh0076@gmail.com">shikharsingh0076@gmail.com</a>
+                    </address>
+                    <div>
+                    <br/>
+                    <div className="btn-group" role="group">
+                        <a role="button" className="btn btn-success" href="tel:+91 9140269982"><i className="fa fa-phone"></i></a>
+                        <a role="button" className="btn btn-danger" href="https://www.instagram.com/shikhar_singh_2817/"> <i className="fa fa-instagram"></i> </a>
+                        <a role="button" href="https://github.com/shikhar2817" className="btn btn-dark"><i className="fa fa-github"></i> </a>
+                        <a href="https://www.linkedin.com/in/shikhar-singh-b6134b137/" className="btn btn-primary"><i className="fa fa-linkedin"></i></a>
+                        <a role="button" className="btn btn-danger" href="mailto:shikharsingh0076@gmail.com"><i className="fa fa-envelope-o"></i> </a>
+                    </div>
+                    <p></p>
 
                 </div>
-                </div>
+            </div>
                 
                 
 

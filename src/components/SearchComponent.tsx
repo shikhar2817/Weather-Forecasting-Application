@@ -49,7 +49,7 @@ const Search = (props:any) => {
                             coordinates: coords
                         });
                         placesOption.push(
-                            <div className={className} onClick={() => handleClickSearch2({place_name: option,coordinates: coords}) } >
+                            <div className={className} key={i} onClick={() => handleClickSearch2({place_name: option,coordinates: coords}) } >
                                 <strong> {option.substr(0, place.length)}</strong>{option.substr(place.length)}
                             </div>
                         );
@@ -141,8 +141,8 @@ const Search = (props:any) => {
                             <div className="popcorn">
                                 <Alert variant="success">
                                     <Alert.Heading>Search Location by</Alert.Heading>
+                                    <hr/>
                                     <p>
-                                        <hr/>
                                         Address, Neighbourhood, Locality, Postcode, Place, District, Region, and Country.
                                     </p>
                                 </Alert>

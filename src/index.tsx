@@ -10,9 +10,9 @@ import 'font-awesome/css/font-awesome.min.css';
 // components takes precedence over default styles.
 
 ReactDOM.render(
-  <React.StrictMode>
+  <React.Fragment>
     <App />
-  </React.StrictMode>,
+  </React.Fragment>,
   document.getElementById('root')
 );
 

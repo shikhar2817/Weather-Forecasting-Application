@@ -23,7 +23,7 @@ export default function AlertsTab(props: any) {
                     {
                         props.data.alerts.map((item:any) => {
                             return(
-                                <div className="alert-div"> 
+                                <div className="alert-div" key={item}> 
                                     <a href={item.uri} className="alert-deco">
                                         <div className="clean-box">
                                             <h4 style={{fontWeight:"bolder"}}> {item.title}</h4>

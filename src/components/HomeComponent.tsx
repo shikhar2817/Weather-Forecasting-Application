@@ -189,19 +189,19 @@ export default function Home () {
                             <p> Latitude: {data.latitude}, Longitude: {data.longitude}</p>
                             <p> <Moment unix>{date}</Moment> ( {data.timezone} ) </p>
                             
-                                <Row style={{marginLeft:'15px'}}>
-                                    <img className="major-icons" src={icon} />
-                                    <Col style={{marginLeft:'15px'}}>
-                                        <h2> {data.currently.temperature} °C</h2>
-                                        <p style={{marginTop:'-10px'}}> Feels like</p>
-                                        <p style={{marginTop:'-10px'}}> <h3> {data.currently.summary} </h3> </p>
-                                        <div style={{marginTop:'-10px'}}>{Math.round(data.currently.precipProbability * 100)}% chance of rain right now </div>
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col> <img className="mini-icons" src={`icons/${data.hourly.icon}.svg`} /> {data.hourly.summary} </Col>
-                                    <Col> <img className="mini-icons" src={`icons/${data.daily.icon}.svg`} /> {data.daily.summary} </Col>
-                                </Row>
+                            <Row style={{marginLeft:'15px'}}>
+                                <img className="major-icons" src={icon} />
+                                <Col style={{marginLeft:'15px'}}>
+                                    <h2> {data.currently.temperature} °C</h2>
+                                    <p style={{marginTop:'-10px'}}> Feels like</p>
+                                    <div style={{marginTop:'-10px'}}> <h3> {data.currently.summary} </h3> </div>
+                                    <div style={{marginTop:'-10px'}}>{Math.round(data.currently.precipProbability * 100)}% chance of rain right now </div>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col> <img className="mini-icons" src={`icons/${data.hourly.icon}.svg`} /> {data.hourly.summary} </Col>
+                                <Col> <img className="mini-icons" src={`icons/${data.daily.icon}.svg`} /> {data.daily.summary} </Col>
+                            </Row>
                                
                             
                         </Container>
