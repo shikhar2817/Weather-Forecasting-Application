@@ -13,7 +13,7 @@ export default function AirqualityTab(props: any) {
     const [date,setDate] = useState();
     
     useEffect(()=> {
-        console.log(props);
+        // console.log(props);
         // setOk(true);
     
         let airQ = props.data.list[0].main.aqi;
@@ -34,7 +34,7 @@ export default function AirqualityTab(props: any) {
             setStatus("Moderate");
             setMessage("Members of sensitive groups may experience health effects. The general public is not likely to be affected.");
             setCaution("Active children and adults, and people with respiratory disease, such as asthma, should limit prolonged outdoor exertion.");
-            setColor("#ff480085");
+            setColor("#ff880065");
         }
         if(airQ === 4) {
             setStatus("Poor");
@@ -54,7 +54,9 @@ export default function AirqualityTab(props: any) {
         <div className="make-visible">
             <h3>Air Quality</h3>
             {/* {ok? */}
+
             <div>
+                <p> Air Quality Index : {props.data.list[0].main.aqi} out of 5 </p>
                 <p> <Moment unix>{date}</Moment> </p>
                 <Container>
                     <Container className="aqi-badge" style={{backgroundColor:`${color}`}}>

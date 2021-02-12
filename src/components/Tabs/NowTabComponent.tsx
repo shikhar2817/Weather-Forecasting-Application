@@ -63,7 +63,7 @@ export default function NowTab(props: any) {
                 </Row>
                 <Row xs={2} md={4} className="clean-box">
                     <Col>Cloud Cover : </Col>
-                    <Col> {props.data.daily.data[0].cloudCover * 100}% </Col>
+                    <Col> {Math.round(props.data.daily.data[0].cloudCover * 100)}% </Col>
                     <Col>Ozone : </Col>
                     <Col> {props.data.daily.data[0].ozone} DU </Col>
                 </Row>

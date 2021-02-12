@@ -3,7 +3,6 @@ import { InputGroup, InputGroupAddon, Button, Input } from 'reactstrap';
 import { mapboxAccessToken } from '../shared/API';
 import './styles/componentStyles.css';
 import Alert from 'react-bootstrap/Alert';
-import { act } from 'react-dom/test-utils';
 
 interface LocationData {
     place_name: string,
@@ -33,6 +32,7 @@ const Search = (props:any) => {
             fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${place}.json?access_token=${mapboxAccessToken}`)
                 .then(response => response.json())
                 .then(data => {
+                    // console.log(data);
                     let len = 0;
                     if (data !== null && data.features) len = data.features.length;
                     let placesOption = [];
