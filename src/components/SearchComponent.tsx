@@ -37,8 +37,7 @@ const Search = (props:any) => {
                     if (data !== null && data.features) len = data.features.length;
                     let placesOption = [];
                     let dataPlacesOption = [];
-                    
-
+                
                     for(let i = 0 ; i < Math.min(5,len); ++i){
                         let option = data.features[i].place_name;
                         let coords = data.features[i].geometry.coordinates;

@@ -36,7 +36,7 @@ export function Header(){
                     <Collapse isOpen={isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem> 
-                                <NavLink className="nav-link" to="/home">
+                                <NavLink className="nav-link" to="">
                                     <span className="fa fa-home fa-lg"> </span> Home
                                 </NavLink>
                             </NavItem>
@@ -56,10 +56,10 @@ export function Header(){
                 </div>
             </Navbar>
             <Switch>
-                <Route path='/home'> <Home /> </Route>
+                <Route exact path='/'> <Home /> </Route>
                 <Route exact path='/about'> <About /> </Route>
                 <Route exact path='/contact'> <Contact /> </Route>
-                <Redirect to="/home" />
+                <Redirect to="/" />
             </Switch>
         </BrowserRouter>
         </>
